@@ -4,11 +4,10 @@ c-shasp-program
 c#
 
 
-
-
 namespace quiz3
 
 {
+    
     class main
     {
         static void Main(string[] args)
