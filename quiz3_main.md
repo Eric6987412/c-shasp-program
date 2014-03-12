@@ -7,7 +7,6 @@ c#
 namespace quiz3
 
 {
-    
     class main
     {
         static void Main(string[] args)
@@ -52,7 +51,6 @@ namespace quiz3
                 }
 
                 Console.WriteLine("Again?");
-
                 string select = Console.ReadLine().ToUpper(); //fool-proofing
                 
                 if ("Y" != select)
