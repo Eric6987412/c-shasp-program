@@ -1,0 +1,70 @@
+c-shasp-program
+===============
+
+c#
+
+namespace quiz3
+{
+    class Triangle
+    {
+        //field
+        public double x1, y1;
+        public double x2, y2;
+        public double x3, y3;
+
+        //method
+        private double DistanceBetweenTwoPoint(double X1, double Y1, double X2, double Y2)
+        {
+            return Math.Sqrt((X2-X1)*(X2-X1)+(Y2-Y1)*(Y2-Y1));            
+        }
+        
+        public bool isValid()
+        {
+            double s1 = DistanceBetweenTwoPoint(this.x1, this.y1, this.x2, this.y2);
+            double s2 = DistanceBetweenTwoPoint(this.x3, this.y3, this.x2, this.y2);
+            double s3 = DistanceBetweenTwoPoint(this.x3, this.y3, this.x1, this.y1);
+            
+            if (s1 + s2 <= s3) return false;
+            if (s2 + s3 <= s1) return false;
+            if (s1 + s3 <= s2) return false;           
+            else               return true;
+        }
+        
+        public double Perimeter()
+        {
+            double s1 = DistanceBetweenTwoPoint(this.x1, this.y1, this.x2, this.y2);
+            double s2 = DistanceBetweenTwoPoint(this.x3, this.y3, this.x2, this.y2);
+            double s3 = DistanceBetweenTwoPoint(this.x3, this.y3, this.x1, this.y1);
+            return s1 + s2 + s3;
+        }
+
+        public double Area()
+        {
+            double s1 = DistanceBetweenTwoPoint(this.x1, this.y1, this.x2, this.y2);
+            double s2 = DistanceBetweenTwoPoint(this.x3, this.y3, this.x2, this.y2);
+            double s3 = DistanceBetweenTwoPoint(this.x3, this.y3, this.x1, this.y1);
+            double s = (s1 + s2 + s3) / 2;
+            return Math.Sqrt(s * (s - s1) * (s - s2) * (s - s3));            
+        }
+
+        public double RadiusOfCircumcircle()
+        {
+            double s1 = DistanceBetweenTwoPoint(this.x1, this.y1, this.x2, this.y2);
+            double s2 = DistanceBetweenTwoPoint(this.x3, this.y3, this.x2, this.y2);
+            double s3 = DistanceBetweenTwoPoint(this.x3, this.y3, this.x1, this.y1);
+            return (s1 * s2 * s3) / (4 * Area());
+        }
+
+        public bool isRight()
+        {
+            double s1 = DistanceBetweenTwoPoint(this.x1, this.y1, this.x2, this.y2);
+            double s2 = DistanceBetweenTwoPoint(this.x3, this.y3, this.x2, this.y2);
+            double s3 = DistanceBetweenTwoPoint(this.x3, this.y3, this.x1, this.y1);
+
+            if (s1 * s1 + s2 * s2 == s3 * s3) return true;
+            if (s1 * s1 + s3 * s3 == s2 * s2) return true;
+            if (s3 * s3 + s2 * s2 == s1 * s1) return true;
+            else                              return false;
+        }
+    }
+}
